@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"ggcache/cache"
 )
 
@@ -20,6 +21,7 @@ func main() {
 	err := s.Start()
 
 	if err != nil {
+		fmt.Println("server start error: ", err)
 		panic(err)
 	}
 

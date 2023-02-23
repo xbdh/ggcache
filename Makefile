@@ -6,3 +6,6 @@ run: build
 runf: build
 	./bin/ggcache --listenAddr=":7080" --leaderAddr=":7070"
 
+runff: build
+	./bin/ggcache --listenAddr=":7090" --leaderAddr=":7070"
+
