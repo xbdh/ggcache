@@ -97,9 +97,9 @@ func ParseCommand(r io.Reader) (interface{}, error) {
 	}
 	switch cmd {
 	case CmdSet:
-		return parseSetCommand(r), nil
+		return ParseSetCommand(r), nil
 	case CmdGet:
-		return parseGetCommand(r), nil
+		return ParseGetCommand(r), nil
 	case CmdJoin:
 		return &CommandJoin{}, nil
 	default:
@@ -114,7 +114,7 @@ func ParseCommand(r io.Reader) (interface{}, error) {
 //
 //	return &CommandJoin{}
 //}
-func parseSetCommand(r io.Reader) *CommandSet {
+func ParseSetCommand(r io.Reader) *CommandSet {
 	var keyLen uint32
 	binary.Read(r, binary.LittleEndian, &keyLen)
 	key := make([]byte, keyLen)
@@ -134,7 +134,7 @@ func parseSetCommand(r io.Reader) *CommandSet {
 		TTL:   ttl,
 	}
 }
-func parseGetCommand(r io.Reader) *CommandGet {
+func ParseGetCommand(r io.Reader) *CommandGet {
 	var keyLen uint32
 	binary.Read(r, binary.LittleEndian, &keyLen)
 	key := make([]byte, keyLen)
